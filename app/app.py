@@ -1,14 +1,15 @@
 from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
-from endpoints.developers import Developer, Developers
+from endpoints.developers import Developer, Developers, DevQuery
 from db import db
 
 app = Flask(__name__)
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///developer.db'
 api.add_resource(Developers, "/developer")
-api.add_resource(Developer, "/developer/<string:dev_id_or_query>")
+api.add_resource(Developer, "/developer/<string:dev_id>")
+api.add_resource(DevQuery, "/developer?<string:query>")
 
 def initialize_app(app):
     """

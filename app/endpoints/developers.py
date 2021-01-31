@@ -63,33 +63,31 @@ class Developer(Resource):
     methods that receive information by the URL
     """
     @marshal_with(resource_fields_get)
-    def get(self, dev_id_or_query=None):
+    def get(self, dev_id=None):
         """
         Gets the developers from the database based on id or query
         
         Args:
-            dev_id_or_query -- Querystring or ID of the developer
+            dev_id -- Querystring or ID of the developer
 
         Return:
             Returns the developers that satify the conditions
         """
-        if dev_id_or_query[0] == '?':
-            pass
-        else:
-            result = DeveloperModel.query.filter_by(id = int(dev_id_or_query)).first()
 
-            if not result:
-                abort(404, message = "Developer not found")
+        result = DeveloperModel.query.filter_by(id = int(dev_id)).first()
+
+        if not result:
+            abort(404, message = "Developer not found")
         
         return result
 
     @marshal_with(resource_fields_get)
-    def put(self, dev_id_or_query):
+    def put(self, dev_id):
         """
         Updates the information about a specific developer
 
         Args:
-            dev_id_or_query -- ID of the developer thats the info needs to be updated
+            dev_id -- ID of the developer thats the info needs to be updated
 
         Return:
             Returns all the information updated
@@ -103,7 +101,7 @@ class Developer(Resource):
 
         args = developer_put_args.parse_args()
 
-        result = DeveloperModel.query.filter_by(id = int(dev_id_or_query)).first()
+        result = DeveloperModel.query.filter_by(id = int(dev_id)).first()
         if not result:
             abort(400, message = "Developer not found, cannot update")
 
@@ -126,17 +124,17 @@ class Developer(Resource):
         
         return result
 
-    def delete(self, dev_id_or_query):
+    def delete(self, dev_id):
         """
         Deletes the developer from the database based on the id
 
         Args:
-            dev_id_or_query -- ID of the developer that will be deleted
+            dev_id -- ID of the developer that will be deleted
 
         Return:
             Returns the success or error code
         """
-        result = DeveloperModel.query.filter_by(id = int(dev_id_or_query)).first()
+        result = DeveloperModel.query.filter_by(id = int(dev_id)).first()
         if not result:
             abort(400, message = "Developer ID does not exist, cannot delete")
         
@@ -144,3 +142,12 @@ class Developer(Resource):
         db.session.commit()
 
         return '', 204
+
+class DevQuery(Resource):
+    """
+    Class used to implement the GET
+    method that receive the query by the URL
+    """
+    def get(self, query):
+        pass
+            
