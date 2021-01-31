@@ -5,11 +5,11 @@ to operate on a database.
 This database contains the information about developers
 with the structure bellow.
 
-id - integer<br />
-name - string<br />
-gender - string<br />
-age - integer<br />
-hobby - string<br />
+id - integer
+name - string
+gender - string
+age - integer
+hobby - string
 date of birth - string
 
 ## Create and config the virtual environment
@@ -22,6 +22,9 @@ Ubuntu - source <path + name of virtual environment>\bin\activate
 
 Install the dependencies of the project.
 pip install -r requirements.txt
+
+You need to activate the virtual environment every time that you open a
+new terminal.
 
 ## Populate the database
 There are some examples of developers in the file developers.csv.
@@ -41,7 +44,16 @@ After execute the steps above, the file developers.db will be created with
 the examples from csv file.
 
 ## Execute the main application
-WIP
+To run the main application follow the steps bellow
+1 - Open a terminal and navigates to the folder app
+2 - Execute the Flask server - python app.py
+3 - Open another terminal and navigate to the project root folder
+4 - Populate the database executing the command - python populate.py
+5 - Execute the main application the request_application.py
+
+You do not need to write the URL, you just need to use the menu and write the right 
+information to do the actions. The application will do the request to the server and it
+will return the result.
 
 ## Unit Test
 In order to execute the Unit test, please follow the steps below.

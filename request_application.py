@@ -79,6 +79,8 @@ def get():
         print(response.json())
     elif get_type == 2:
         print("Write a valid querystring")
+        query = input()
+        print("We are working on this method")
     elif get_type == 3: 
         print("What is the developer ID?")
         id = input()
