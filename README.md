@@ -5,11 +5,11 @@ to operate on a database.
 This database contains the information about developers
 with the structure bellow.
 
-id - integer
-name - string
-gender - string
-age - integer
-hobby - string
+id - integer<br />
+name - string<br />
+gender - string<br />
+age - integer<br />
+hobby - string<br />
 date of birth - string
 
 ## Create and config the virtual environment
